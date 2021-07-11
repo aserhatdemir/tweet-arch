@@ -2,8 +2,8 @@ from flask import Flask, abort
 from apscheduler.schedulers.background import BackgroundScheduler
 
 from twitter import Tweepy
-from repos import TweetRepoFile
-from repos import UserRepoFile
+from repos.tweet_repo import TweetRepoFile
+from repos.user_repo import UserRepoFile
 
 app = Flask(__name__)
 
@@ -41,7 +41,7 @@ def delete_user(user_name):
     if not user_repo.user_exists(user_id):
         return 'User does not exist, doing nothing!'
     result = user_repo.delete_user(user_id)
-    tweet_repo.delete_tweets(user_name)
+    tweet_repo.delete_tweets(user_id)
     if result:
         return result
     abort(404)

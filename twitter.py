@@ -11,7 +11,7 @@ class Tweet:
 
 
 class TwitterAPI:
-    def _connect_to_twitter_api():
+    def _connect_to_twitter_api(self):
         pass
 
     def fetch_old_tweets(self, user_id):
